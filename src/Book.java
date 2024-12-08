@@ -58,31 +58,23 @@ public class Book {
         return titleCase.toString();
     }
 
-
+    // toString method - to turn the information of a book to string and printing it
     public String toString(){
        return String.format("%-11s : %s /n %-11s : %s /n %-11s : %f /n %-11s : %s /n %-11s : %s /n", "Title", title, "Author", author, "Price", price, "Publisher", publisher, "ISBN", isbn);
     }
 
-    public boolean equals(Object anotherObject){
-    //to write
+    // equals method - to check if two books are equal
+    public boolean equals(Book anotherBook){
+        return this.title.equals(anotherBook.title) && this.author.equals(anotherBook.author) && this.price == anotherBook.price && this.publisher.equals(anotherBook.publisher) && this.isbn.equals(anotherBook.isbn);
      }
 
-
+    // clone method - cloning a book
     public Book clone(){
-
-        Book cloneBook = new Book();
-
-        cloneBook.title = this.title;
-        cloneBook.author = this.author;
-        cloneBook.price = this.price;
-        cloneBook.publisher = this.publisher;
-        cloneBook.isbn = this.isbn;
-
-        return cloneBook;
+        return new Book(this.title, this.author, this.price, this.publisher, this.isbn);
     }
 
 
-    //Getters
+    //Getters - getting all the data members of the book
     public String getTitle(){
         return this.title;
     }
@@ -96,18 +88,18 @@ public class Book {
     public String getPublisher(){
         return this.publisher;
     }
-    public long getIsbn(){
+    public String getIsbn(){
         return this.isbn;
     }
 
 
-    //Setters
+    //Setters - setting all the data members of a book to another method
     public void setTitle(String anotherTitle){
-        this.title = anotherTitle;
+        this.title = toTitleCase(anotherTitle);
     }
 
     public void setAuthor(String anotherAuthor){
-        this.author = anotherAuthor;
+        this.author = toTitleCase(anotherAuthor);
     }
 
     public void setPrice(int anotherPrice){
@@ -118,7 +110,7 @@ public class Book {
         this.publisher = anotherPublisher;
     }
 
-    public void setIsbn(long anotherIsbn){
+    public void setIsbn(String anotherIsbn){
         this.isbn = anotherIsbn;
     }
 }
