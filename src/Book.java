@@ -1,14 +1,14 @@
-import java.util.Locale;
+import java.util.*;
 
 public class Book {
 
     private String title;
     private String author;
-    private int price;
+    private double price;
     private String publisher;
-    private long isbn;
+    private String isbn;
 
-
+    //Default Constructor
     public Book(){
     }
 
@@ -18,9 +18,9 @@ public class Book {
     }
 
 
-    public Book(String title, String author, int price, String publisher, long isbn){
-        this.title = title;
-        this.author = author;
+    public Book(String title, String author, double price, String publisher, String isbn){
+        this.title = toTitleCase(title);
+        this.author = toTitleCase(author);
         this.price = price;
         this.publisher = publisher;
         this.isbn = isbn;
@@ -32,18 +32,14 @@ public class Book {
     }
 
     //toWorkOn
-    public int checkIsbnStatus(long isbn) {
+    public int checkIsbnStatus(String isbn) {
 
-        switch (isbn) {
-            case 1:
-                return 0;
-            break;
-            case 2:
-                return 1;
-            case 3:
-                return -1;
-            default:
-
+        if (isbn.matches("\\d{1}-\\d{2,7}-\\d{1}")){
+            return 0; //ISBN10
+        } else if (isbn.matches("978-\\d{1}-\\d{2,7}-\\d{1}")){
+            return 1; //ISBN13
+        } else {
+            return -1; //Invalid ISBN
         }
 
     }
