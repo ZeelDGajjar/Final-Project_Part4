@@ -34,7 +34,7 @@ public class Book {
     //toWorkOn
     public int checkIsbnStatus(String isbn) {
 
-        if (isbn.matches("\\d{1}-\\d{2,7}-\\d{1}")){
+        if (isbn.matches("\\d{1}-\\d{2,7}-\\d{1}")){ //not sure with the input strings
             return 0; //ISBN10
         } else if (isbn.matches("978-\\d{1}-\\d{2,7}-\\d{1}")){
             return 1; //ISBN13
@@ -45,26 +45,27 @@ public class Book {
     }
 
     //Make sure all the words are to titlecase
-    public void toTitleCase(String title, String author){
-
-        title =  title.substring(1).toUpperCase() + title.substring(2).toLowerCase();
-        author = author.substring(1).toUpperCase() + author.substring(2). toLowerCase();
+    public String toTitleCase(String input) {
+        String[] words = input.toLowerCase().split(" ");
+        StringBuilder titleCase = new StringBuilder();
+        for (String word : words) {
+           if (!word.isEmpty()) {
+               titleCase.append(Character.toUpperCase(word.charAt(0)));
+               titleCase.append(word.substring(1));
+               titleCase.append(" ");
+           }
+        }
+        return titleCase.toString();
     }
 
 
-    public void toString(String title, String author, int price, String publisher, long isbn){
-
-        System.out.printf("%-11s : %s /n", "Title", title);
-        System.out.printf("%-11s : %s /n", "Author", author);
-        System.out.printf("%-11s : %d /n", " Price", price);
-        System.out.printf("%-11s : %s /n", "Publisher", publisher);
-        System.out.printf("%-11s : %o /n", "ISBN", isbn);
-
+    public String toString(){
+       return String.format("%-11s : %s /n %-11s : %s /n %-11s : %f /n %-11s : %s /n %-11s : %s /n", "Title", title, "Author", author, "Price", price, "Publisher", publisher, "ISBN", isbn);
     }
 
-    public boolean equals(){
-        return true; //to write
-    }
+    public boolean equals(Object anotherObject){
+    //to write
+     }
 
 
     public Book clone(){
