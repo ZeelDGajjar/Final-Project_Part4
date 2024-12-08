@@ -1,5 +1,8 @@
 import java.util.*;
 
+//To add author
+
+
 public class Library {
 
     private ArrayList<Book> book;
@@ -7,8 +10,8 @@ public class Library {
     // public Library() {}  //cant add empty constructor
 
     public Library(){
-        book = new ArrayList<>();
-        book.add(new Book("1984", "George Orwell", 9.99, "Penguin", "978-0-452-28423-4"));
+        book = new ArrayList<>(5);
+        book.add(new Book("1984", "George Orwell", 9.99, "Penguin", "978-0-452-28423-4")); //do need to add these?
         book.add(new Book("To Kill a Mockingbird", "Harper Lee", 7.99, "J.B. Lippincott & Co.", "978-0-06-112008-4"));
         book.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 10.99, "Scribner", "978-0-7432-7356-5"));
         book.add(new Book("Moby Dick", "Herman Melville", 12.99, "Harper & Brothers", "978-0-14-243724-7"));
@@ -34,6 +37,22 @@ public class Library {
     }
 
     public boolean equals(Object obj){
+        return this.book.equals(obj);
+    }
 
+    public String toString(){
+        StringBuilder sb = new StringBuilder("BookCollection:\n");
+        for (Book book : book) {
+            sb.append(book.toString()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public ArrayList<Book> getBook(){
+        return new ArrayList<>(book); // Return a copy to maintain encapsulation
+    }
+
+    public void setBook(ArrayList<Book> book){
+        this.book = new ArrayList<>(book); // Create a copy to prevent external modifications
     }
 }
