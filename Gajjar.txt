@@ -1,0 +1,19 @@
+
+/**
+ *
+ * @author 2474008
+ */
+
+User link:
+GitHub link: https://github.com/ZeelDGajjar
+
+Part 1 - link to prior assignments:
+https://github.com/ZeelDGajjar/Assignment1.git
+https://github.com/ZeelDGajjar/Assignment2.git
+https://github.com/ZeelDGajjar/Assignment3.git
+
+Part 2,3, and 4:
+https://github.com/ZeelDGajjar/FinalProject_Part-2.git
+https://github.com/ZeelDGajjar/Final-Project_Part3.git
+https://github.com/ZeelDGajjar/Final-Project_Part4.git
+
