@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * The org.example.Book class represents a book with details such as title, author, price, publisher, and ISBN.
+ * The main1.java.example.Book class represents a book with details such as title, author, price, publisher, and ISBN.
  * It includes constructors, getters, setters, and methods for ISBN validation, title case conversion, and book comparison.
  *
  * @author 2474008
@@ -78,7 +78,7 @@ public class Book {
     }
 
     /**
-     * Returns a string representation of the org.example.Book object.
+     * Returns a string representation of the main1.java.example.Book object.
      * @return A formatted string containing the book's title, author, price, publisher, and ISBN.
      */
     public String toString() {
