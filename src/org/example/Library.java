@@ -70,11 +70,11 @@ public class Library {
      * @return A string that lists all the books in the library.
      */
     public String toString() {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (Book book : this.book) {
-            output += String.format("%s:\n%s\n\n", "Book", book.toString());
+            output.append(String.format("%s:\n%s\n\n", "Book", book.toString()));
         }
-        return output;
+        return output.toString();
     }
 
     //Getter for books
