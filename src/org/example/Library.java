@@ -8,53 +8,81 @@ import java.util.*;
 
 public class Library {
 
+    // Data member to store the list of books
     private ArrayList<Book> book;
 
-    // public org.example.Library() {}  //cant add empty constructor
+    /**
+     * Default constructor - Creates an empty list of books and adds 5 books.
+     */
+    public Library() {
+        book = new ArrayList<>();
 
-    public Library(){
-        book = new ArrayList<>(5);
-        book.add(new Book("1984", "George Orwell", 9.99, "Penguin", "978-0-452-28423-4")); //do need to add these?
-        book.add(new Book("To Kill a Mockingbird", "Harper Lee", 7.99, "J.B. Lippincott & Co.", "978-0-06-112008-4"));
-        book.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 10.99, "Scribner", "978-0-7432-7356-5"));
-        book.add(new Book("Moby Dick", "Herman Melville", 12.99, "Harper & Brothers", "978-0-14-243724-7"));
-        book.add(new Book("Pride and Prejudice", "Jane Austen", 8.99, "T. Egerton", "978-0-19-953556-9"));
+        book.add(new Book());
+        book.add(new Book());
+        book.add(new Book());
+        book.add(new Book());
+        book.add(new Book());
     }
 
+    /**
+     * Constructor with ArrayList of Book objects - Copies the provided ArrayList into the library.
+     * @param book The ArrayList of Book objects to be copied.
+     */
     public Library(ArrayList<Book> book){
         this.book = new ArrayList<>(book);
     }
 
+    /**
+     * Copy constructor - Creates a copy of the library by copying the books list from another library.
+     * @param anotherLibrary The Library to be copied.
+     */
     public Library(Library anotherLibrary){
         this.book = new ArrayList<>(anotherLibrary.book);
     }
 
+    /**
+     * Searches for books by keyword in title or author.
+     * @param Keyword The keyword to search for in the book's title or author.
+     * @return A list of books that contain the keyword in the title or author.
+     */
     public ArrayList<Book> searchBook(String Keyword){
         ArrayList<Book> searchResult = new ArrayList<>();
         for (Book book : book) {
-            if (book.getTitle().toLowerCase().contains(Keyword.toLowerCase()) || book.getAuthor().toLowerCase().contains(Keyword.toLowerCase())) {
+            if (book.getTitle().toLowerCase().contains(Keyword.toLowerCase()) ||
+                    book.getAuthor().toLowerCase().contains(Keyword.toLowerCase())) {
                 searchResult.add(book);
             }
         }
         return searchResult;
     }
 
-    public boolean equals(Object obj){
-        return this.book.equals(obj);
+    /**
+     * Checks if two libraries are equal based on the list of books.
+     * @param anotherLibrary The library to compare with.
+     * @return True if the libraries have the same list of books, false otherwise.
+     */
+    public boolean equals(Library anotherLibrary){
+        return this.book.equals(anotherLibrary.book);
     }
 
-    public String toString(){
-        StringBuilder sb = new StringBuilder("BookCollection:\n");
-        for (Book book : book) {
-            sb.append(book.toString()).append("\n");
+    /**
+     * Returns a string representation of the library and its books.
+     * @return A string that lists all the books in the library.
+     */
+    public String toString() {
+        String output = "";
+        for (Book book : this.book) {
+            output += String.format("%s:\n%s\n\n", "Book", book.toString());
         }
-        return sb.toString();
+        return output;
     }
 
+    //Getter for books
     public ArrayList<Book> getBook(){
         return new ArrayList<>(book); // Return a copy to maintain encapsulation
     }
 
+    //Setter for books
     public void setBook(ArrayList<Book> book){
         this.book = new ArrayList<>(book); // Create a copy to prevent external modifications
     }
